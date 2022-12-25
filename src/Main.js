@@ -1,19 +1,41 @@
-import React from 'react'
-import { useGlobalContext } from './context'
-import Form from './Form';
-import Loading from './Loading';
+import React from "react";
+import { useGlobalContext } from "./context";
+import Form from "./Form";
+import Loading from "./Loading";
 
 const Main = () => {
-    const {waiting, isLoading, questions, index, correct} = useGlobalContext();
-    if(waiting){
-        return <Form />
-    }
-    if(isLoading){
-        return <Loading />
-    }
+  const { waiting, isLoading, questions, index, correct } = useGlobalContext();
+  if (waiting) {
+    return <Form />;
+  }
+  if (isLoading) {
+    return <Loading />;
+  }
+  const { question, incorrect_answers, correct_answer } = questions[index];
+  const answers = [...incorrect_answers, correct_answer];
   return (
-    <div>Main</div>
-  )
-}
+    <main>
+      <section className="quiz">
+        <p className="correct-answer">
+          correct answers: {correct} / {index}
+        </p>
+        <div className="container">
+          <h2 
+          dangerouslySetInnerHTML={{__html: question}}
+          />
+          <div>
+            {answers.map((answer, index) => (
+              <button 
+              key={index} 
+              className="answer-btn" 
+              dangerouslySetInnerHTML={{__html: answer}}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+};
 
-export default Main
+export default Main;
