@@ -81,7 +81,8 @@ const AppProvider = ({ children }) => {
         correct,
         nextQuestions,
         checkAnswer,
-        closeModal
+        closeModal,
+        isModalOpen
       }}
     >
       {children}
