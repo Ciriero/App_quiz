@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const API_ENDPOINT = "https://opentdb.com/api.php?";
 
@@ -7,6 +7,11 @@ const tempUrl =
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+  const [waiting, setWaiting] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [correct, setCorrect] = useState(0);
   return (
     <AppContext.Provider value={"hi there"}>{children}</AppContext.Provider>
   );
