@@ -61,7 +61,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ waiting, isLoading, questions, index, correct, nextQuestions }}
+      value={{ waiting, isLoading, questions, index, correct, nextQuestions, checkAnswer }}
     >
       {children}
     </AppContext.Provider>

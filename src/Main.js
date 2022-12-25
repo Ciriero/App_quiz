@@ -4,7 +4,7 @@ import Form from "./Form";
 import Loading from "./Loading";
 
 const Main = () => {
-  const { waiting, isLoading, questions, index, correct, nextQuestions } = useGlobalContext();
+  const { waiting, isLoading, questions, index, correct, nextQuestions, checkAnswer } = useGlobalContext();
   if (waiting) {
     return <Form />;
   }
@@ -29,6 +29,7 @@ const Main = () => {
               key={index} 
               className="answer-btn" 
               dangerouslySetInnerHTML={{__html: answer}}
+              onClick={() => checkAnswer(correct_answer === answer)}
               />
             ))}
           </div>
