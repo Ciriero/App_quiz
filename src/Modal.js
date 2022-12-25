@@ -9,16 +9,26 @@ const Modal = () => {
         isModalOpen ? "modal-container isOpen" : "modal-container"
       }`}
     >
-      <div className="modal-content">
-        <h2>Congrats!</h2>
-        <p>
-          You answered {((correct / questions.length) * 100).toFixed(0)}% of
-          questions correctly
-        </p>
-        <button className="close-btn" onClick={closeModal}>
-          play again
-        </button>
-      </div>
+      {correct > 0 ? (
+        <div className="modal-content">
+          <h2>Congrats!</h2>
+          <p>
+            You answered {((correct / questions.length) * 100).toFixed(0)}% of
+            questions correctly
+          </p>
+          <button className="close-btn" onClick={closeModal}>
+            play again
+          </button>
+        </div>
+      ) : (
+        <div className="modal-content">
+          <h2>Oh boy, no correct answer !</h2>
+
+          <button className="close-btn" onClick={closeModal}>
+            play again
+          </button>
+        </div>
+      )}
     </div>
   );
 };
