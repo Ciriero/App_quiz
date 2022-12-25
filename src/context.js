@@ -36,14 +36,25 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  //we will delete this useeffect later; only neeed it to check functionality
+  //we will delete this useeffect later; only need it to check functionality
   useEffect(() => {
-    getData(tempUrl)
-  }, [])
+    getData(tempUrl);
+  }, []);
+
+  const nextQuestions = () => {
+    setIndex((prevValue) => {
+      const index = prevValue + 1;
+      if (index > questions.length - 1) {
+        return 0;
+      } else {
+        return index;
+      }
+    });
+  };
 
   return (
     <AppContext.Provider
-      value={{ waiting, isLoading, questions, index, correct }}
+      value={{ waiting, isLoading, questions, index, correct, nextQuestions }}
     >
       {children}
     </AppContext.Provider>
