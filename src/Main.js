@@ -20,12 +20,16 @@ const Main = () => {
           correct answers: {correct} / {index}
         </p>
         <div className="container">
-          <h2>{question}</h2>
+          <h2 
+          dangerouslySetInnerHTML={{__html: question}}
+          />
           <div>
             {answers.map((answer, index) => (
-              <button key={index} className="answer-btn">
-                {answer}
-              </button>
+              <button 
+              key={index} 
+              className="answer-btn" 
+              dangerouslySetInnerHTML={{__html: answer}}
+              />
             ))}
           </div>
         </div>
