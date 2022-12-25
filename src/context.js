@@ -52,9 +52,16 @@ const AppProvider = ({ children }) => {
     });
   };
 
+  const checkAnswer = (value) => {
+    if (value) {
+      setCorrect((prevValue) => prevValue + 1);
+    }
+    nextQuestions();
+  };
+
   return (
     <AppContext.Provider
-      value={{ waiting, isLoading, questions, index, correct, nextQuestions }}
+      value={{ waiting, isLoading, questions, index, correct, nextQuestions, checkAnswer }}
     >
       {children}
     </AppContext.Provider>
