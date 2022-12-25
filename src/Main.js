@@ -15,8 +15,8 @@ const Main = () => {
     const answers = [...incorrect_answers, correct_answer] 
   return (
     <main>
-        <section>
-            <p>
+        <section className='quiz'>
+            <p className='correct-answer'>
                 correct answers: {correct} / {index}
             </p>
         </section>

@@ -119,3 +119,27 @@ Loading
   border-top-color: var(--clr-spinner);
   animation: spinner 0.6s linear infinite;
 }
+
+/*
+=============== 
+Quiz
+===============
+*/
+
+.quiz {
+  width: 90vw;
+  max-width: var(--max-width);
+  margin: 4rem auto;
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  padding: 3rem;
+}
+
+.correct-answer {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  text-align: right;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  color: var(--clr-green-dark);
+}
