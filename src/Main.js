@@ -11,8 +11,16 @@ const Main = () => {
     if(isLoading){
         return <Loading />
     }
+    const {question, incorrect_answers, correct_answer} = (questions[index])
+    const answers = [...incorrect_answers, correct_answer] 
   return (
-    <div>Main</div>
+    <main>
+        <section>
+            <p>
+                correct answers: {correct} / {index}
+            </p>
+        </section>
+    </main>
   )
 }
 
