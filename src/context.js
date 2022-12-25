@@ -13,7 +13,11 @@ const AppProvider = ({ children }) => {
   const [index, setIndex] = useState(0);
   const [correct, setCorrect] = useState(0);
   return (
-    <AppContext.Provider value={"hi there"}>{children}</AppContext.Provider>
+    <AppContext.Provider
+      value={{ waiting, isLoading, questions, index, correct }}
+    >
+      {children}
+    </AppContext.Provider>
   );
 };
 
