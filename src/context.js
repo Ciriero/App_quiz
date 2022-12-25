@@ -1,8 +1,9 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const API_ENDPOINT = "https://opentdb.com/api.php?";
 
+//just to check functionality
 const tempUrl =
   "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
 const AppContext = createContext();
@@ -13,23 +14,32 @@ const AppProvider = ({ children }) => {
   const [questions, setQuestions] = useState([]);
   const [index, setIndex] = useState(0);
   const [correct, setCorrect] = useState(0);
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const getData = async (url) => {
     setWaiting(false);
     setIsLoading(true);
-    const {data} = await axios(url).catch(err => console.log(err));
-    if(data){
-        const datas = data.results
-        if(datas.length > 0){
-            setQuestions(datas);
-            setWaiting(false)
-            setIsLoading(false)
-        } else {
-            setWaiting(true);
-        }
+    const { data } = await axios(url).catch((err) => console.log(err));
+    if (data) {
+      const datas = data.results;
+      console.log(datas);
+      if (datas.length > 0) {
+        setQuestions(datas);
+        setWaiting(false);
+        setIsLoading(false);
+      } else {
+        setWaiting(true);
+        setError(true);
+      }
+    } else {
+      setWaiting(true);
     }
-  }
+  };
+
+  //we will delete this useeffect later; only neeed it to check functionality
+  useEffect(() => {
+    getData(tempUrl)
+  }, [])
 
   return (
     <AppContext.Provider
