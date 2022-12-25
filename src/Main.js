@@ -2,6 +2,7 @@ import React from "react";
 import { useGlobalContext } from "./context";
 import Form from "./Form";
 import Loading from "./Loading";
+import Modal from "./Modal";
 
 const Main = () => {
   const { waiting, isLoading, questions, index, correct, nextQuestions, checkAnswer } = useGlobalContext();
@@ -15,6 +16,7 @@ const Main = () => {
   const answers = [...incorrect_answers, correct_answer];
   return (
     <main>
+        <Modal />
       <section className="quiz">
         <p className="correct-answer">
           correct answers: {correct} / {index}
