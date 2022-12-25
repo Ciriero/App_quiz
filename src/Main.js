@@ -4,7 +4,7 @@ import Form from "./Form";
 import Loading from "./Loading";
 
 const Main = () => {
-  const { waiting, isLoading, questions, index, correct } = useGlobalContext();
+  const { waiting, isLoading, questions, index, correct, nextQuestions } = useGlobalContext();
   if (waiting) {
     return <Form />;
   }
@@ -33,6 +33,7 @@ const Main = () => {
             ))}
           </div>
         </div>
+        <button className="next" onClick={nextQuestions}>Next</button>
       </section>
     </main>
   );
