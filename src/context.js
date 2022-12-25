@@ -15,6 +15,7 @@ const AppProvider = ({ children }) => {
   const [index, setIndex] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [error, setError] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getData = async (url) => {
     setWaiting(false);
@@ -45,6 +46,7 @@ const AppProvider = ({ children }) => {
     setIndex((prevValue) => {
       const index = prevValue + 1;
       if (index > questions.length - 1) {
+        openModal();
         return 0;
       } else {
         return index;
@@ -59,9 +61,28 @@ const AppProvider = ({ children }) => {
     nextQuestions();
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setWaiting(true)
+    setCorrect(0)
+    setIsModalOpen(false);
+  };
+
   return (
     <AppContext.Provider
-      value={{ waiting, isLoading, questions, index, correct, nextQuestions, checkAnswer }}
+      value={{
+        waiting,
+        isLoading,
+        questions,
+        index,
+        correct,
+        nextQuestions,
+        checkAnswer,
+        closeModal
+      }}
     >
       {children}
     </AppContext.Provider>
