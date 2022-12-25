@@ -143,3 +143,34 @@ Quiz
   letter-spacing: var(--spacing);
   color: var(--clr-green-dark);
 }
+
+.container h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+.answer-btn {
+  display: block;
+  width: 100%;
+  margin: 0.75rem auto;
+  background: var(--clr-blue-1);
+  border-radius: var(--radius);
+  border-color: transparent;
+  color: var(--clr-black);
+  letter-spacing: var(--spacing);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: var(--transition);
+}
+@media screen and (min-width: 576px) {
+  .answer-btn {
+    max-width: 60%;
+  }
+}
+.answer-btn:hover {
+  background: var(--clr-spinner);
+  color: var(--clr-white);
+}
