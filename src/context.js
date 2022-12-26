@@ -16,6 +16,11 @@ const AppProvider = ({ children }) => {
   const [correct, setCorrect] = useState(0);
   const [error, setError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [values, setValues] = useState({
+    amount: 10,
+    category: "sports",
+    difficulty: "easy"
+  })
 
   const getData = async (url) => {
     setWaiting(false);
@@ -38,9 +43,17 @@ const AppProvider = ({ children }) => {
   };
 
   //we will delete this useeffect later; only need it to check functionality
-  useEffect(() => {
-    getData(tempUrl);
-  }, []);
+//   useEffect(() => {
+//     getData(tempUrl);
+//   }, []);
+
+//replace the useEffect by the values ​​of the user:
+
+const handleChange = (e) => {}
+
+const handleSubmit = (e) => {
+    e.preventDefault()
+}
 
   const nextQuestions = () => {
     setIndex((prevValue) => {
@@ -82,7 +95,10 @@ const AppProvider = ({ children }) => {
         nextQuestions,
         checkAnswer,
         closeModal,
-        isModalOpen
+        isModalOpen,
+        values,
+        handleChange,
+        handleSubmit
       }}
     >
       {children}
