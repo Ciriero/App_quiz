@@ -49,7 +49,9 @@ const AppProvider = ({ children }) => {
 
 //replace the useEffect by the values ​​of the user:
 
-const handleChange = (e) => {}
+const handleChange = (e) => {
+    setValues({...values, [e.target.name]: e.target.value})
+}
 
 const handleSubmit = (e) => {
     e.preventDefault()
