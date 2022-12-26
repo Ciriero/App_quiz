@@ -3,6 +3,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const API_ENDPOINT = "https://opentdb.com/api.php?";
 
+const table = {
+    sports: 21,
+    history: 23,
+    politics: 24,
+  }
+
 //just to check functionality
 const tempUrl =
   "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
@@ -19,8 +25,8 @@ const AppProvider = ({ children }) => {
   const [values, setValues] = useState({
     amount: 10,
     category: "sports",
-    difficulty: "easy"
-  })
+    difficulty: "easy",
+  });
 
   const getData = async (url) => {
     setWaiting(false);
@@ -43,19 +49,23 @@ const AppProvider = ({ children }) => {
   };
 
   //we will delete this useeffect later; only need it to check functionality
-//   useEffect(() => {
-//     getData(tempUrl);
-//   }, []);
+  //   useEffect(() => {
+  //     getData(tempUrl);
+  //   }, []);
 
-//replace the useEffect by the values ​​of the user:
+  //replace the useEffect by the values ​​of the user:
 
-const handleChange = (e) => {
-    setValues({...values, [e.target.name]: e.target.value})
-}
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
-const handleSubmit = (e) => {
-    e.preventDefault()
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { amount, category, difficulty } = values;
+    const url = `${API_ENDPOINT}amount=${amount}&difficulty=${difficulty}&category=${table[category]}&type=multiple`;
+    getData(url);
+  };
 
   const nextQuestions = () => {
     setIndex((prevValue) => {
@@ -81,9 +91,10 @@ const handleSubmit = (e) => {
   };
 
   const closeModal = () => {
-    setWaiting(true)
-    setCorrect(0)
+    setWaiting(true);
+    setCorrect(0);
     setIsModalOpen(false);
+    setError(false)
   };
 
   return (
@@ -100,7 +111,8 @@ const handleSubmit = (e) => {
         isModalOpen,
         values,
         handleChange,
-        handleSubmit
+        handleSubmit,
+        error
       }}
     >
       {children}
