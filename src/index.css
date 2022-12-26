@@ -8,8 +8,10 @@ Variables
   --clr-bg: #f1f5f8;
   --clr-bg-1: #102a42;
   --clr-grey-p: #324d67;
+  --clr--form: 	#324d67;
   --clr-spinner: #49a6e9;
   --clr-blue-1: #8bcbf9;
+  --clr-blue-light: #ebf7ff;
   --clr-white: #fff;
   --clr-red-dark: #bb2525;
   --clr-red-light: #e66b6b;
@@ -176,7 +178,8 @@ Quiz
 }
 
 .next,
-.close-btn {
+.close-btn,
+.submit-btn {
   border-radius: var(--radius);
   border-color: transparent;
   padding: 0.25rem 0.5rem;
@@ -193,7 +196,7 @@ Quiz
   transition: var(--transition);
   cursor: pointer;
 }
-.next-question:hover {
+.next:hover {
   background: #805900;
   color: #ffb100;
 }
@@ -238,4 +241,52 @@ Modal
 }
 .close-btn {
   margin-right: auto;
+}
+
+/*
+=============== 
+Form
+===============
+*/
+
+main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-small {
+  max-width: 500px;
+}
+
+.setup-form h3 {
+  margin-bottom: 2rem;
+}
+.form-control {
+  margin-bottom: 2rem;
+}
+.form-control label {
+  display: block;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: var(--clr--form);
+  margin-bottom: 0.5rem;
+}
+.form-input {
+  border: none;
+  background: var(--clr-blue-light);
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  border-radius: var(--radius);
+  outline: none;
+}
+.error {
+  color: var(--clr-red-dark);
+  text-transform: capitalize;
+}
+.submit-btn {
+  width: 100%;
+  margin-top: 3rem;
 }
