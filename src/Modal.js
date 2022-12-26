@@ -22,7 +22,7 @@ const Modal = () => {
         </div>
       ) : (
         <div className="modal-content">
-          <h2>Oh boy, no correct answer !</h2>
+          <h2>Oh boy, no correct answer!!!</h2>
 
           <button className="close-btn" onClick={closeModal}>
             play again
