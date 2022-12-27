@@ -13,7 +13,10 @@ const Main = () => {
     return <Loading />;
   }
   const { question, incorrect_answers, correct_answer } = questions[index];
-  const answers = [...incorrect_answers, correct_answer];
+  const answers = [...incorrect_answers];
+  const randomIndex = Math.floor(Math.random() * 4)
+  answers.splice(randomIndex, 0, correct_answer)
+  
   return (
     <main>
         <Modal />
